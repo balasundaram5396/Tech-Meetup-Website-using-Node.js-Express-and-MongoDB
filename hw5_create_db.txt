@@ -1,0 +1,62 @@
+use meetupdb
+
+db.users.drop();
+db.connections.drop();
+db.userconnections.drop();
+
+
+db.createCollection("users")
+db.createCollection("connections")
+db.createCollection("userconnections")
+
+db.connections.insert(
+[
+    { "connectionID": "101", "connectionName": "The AI Summit", "connectionTopic": "Tech- Artificial Intelligence", "venue": "Charlotte, NC", "date": "2020-01-20", "time": "5 PM", "details":"Trends in AI" , "hostedby":"bala30"},
+    { "connectionID": "102", "connectionName":"API World 2019", "connectionTopic":"Software developers meetup", "venue":"New Jersey, NY", "date":"2020-01-10", "time":"8 PM", "details":"Meetup on new releases in mobile technology", "hostedby":"tom85" },
+    { "connectionID": "106", "connectionName":"Acronis Global Cyber summit", "connectionTopic":"Cyber security", "venue":"Orlando, FL", "date":"2020-02-29", "time":"11 AM", "details":"Conference on cybersecurity and Ethical Hacking" , "hostedby":"bala30"},
+    { "connectionID": "100", "connectionName":"Microsoft Ignite", "connectionTopic":"Microsoft conference", "venue":"Las Vegas, CA", "date":"2020-03-02", "time":"4 PM", "details":"Event by microsoft for its new product launches like Surface Pro tablet.", "hostedby":"tom85" },
+    { "connectionID": "110", "connectionName":"Apple's WWDC 2019 Event", "connectionTopic":"Apple Product launch", "venue":"San Jose, CA", "date":"2019-11-04", "time":"2 PM", "details":"Event by Apple for its new product launches and iOS 13.0" , "hostedby":"bala30"},
+    { "connectionID": "109", "connectionName":"CPX 360 2019", "connectionTopic":"Mobile app Dev meetup", "venue":"Charlotte, NC", "date":"2019-10-14", "time":"5 PM", "details":"Trends in Mobile application development" , "hostedby":"tom85"},
+    { "connectionID": "126", "connectionName":"European Blockchain convention", "connectionTopic":"Evolution of Blockchain", "venue":"New york city, NY", "date":"2019-10-20", "time":"6 PM", "details": "Blockchain and its significane in modern world", "hostedby":"bala30" }
+])
+
+
+db.users.insert([
+{
+        "userID" : "tom85",
+        "firstName" : "Tommy",
+        "lastName" : "Harris",
+        "email" : "tommy@gmail.com",
+	"city" : "Charlotte",
+        "phone" : "9806433178",
+	 "password" : {
+                "iv" : "2eac2488cbc0ed381cd926b910c1d02b",
+                "encryptedData" : "c8f96178c980a3a04e3da791fbcf7b8a",
+                "key" : BinData(0,"AKIqC7t2tOYri2PGnX7Q22T/v9qT8cFHEupcuSo6k34=")
+        }
+},
+{
+        "userID" : "bala30",
+        "firstName" : "Balasundaram",
+        "lastName" : "Avudai Nayagam",
+        "email" : "balvudain@uncc.edu",
+	"city" : "Charlotte",
+        "phone" : "9806433107",
+	 "password" : {
+                "iv" : "2787256ccbae9cfd544e0f3e6685c2c4",
+                "encryptedData" : "2c38a7870448ff292e21651431da93aa",
+                "key" : BinData(0,"YKKKt0JRhhxAUo6ANFok2BiYxf4iyxYySE5IExJzoZM=")
+        }
+}
+])
+
+
+db.userconnections.insert(
+[
+{"userID":"bala30","connectionId":"102" ,"rsvp":"Yes","connectionName":"API World 2019"},
+{"userID":"bala30","connectionId":"126" ,"rsvp":"No","connectionName":"European Blockchain convention"},
+{"userID":"tom85","connectionId":"126" ,"rsvp":"Yes","connectionName":"European Blockchain convention"}
+])
+
+
+
